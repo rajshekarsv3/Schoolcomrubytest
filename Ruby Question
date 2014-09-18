@@ -1,0 +1,117 @@
+=?what you can conclude about a ? i. a+b ii. a(+b)
+
+In (a+b) a is a variable
+In a(+b) a is a function name with parameter +b
+
+
+=>write a one line ruby code to swap two variables .
+
+def swap(a,b); a=a+b; b=a-b; a=a-b; puts a; puts b; end; swap(4,5)
+
+=>Refactor the following code !
+
+a. if !tweets.empty? tweets = Timeline.new("Horrah ! finally I am on tweeter .") puts tweets else puts "No tweets for you !" end
+
+unless tweets.empty
+  tweets = Timeline.new("Horrah ! finally I am on tweeter")
+  puts tweets
+else
+  puts "No Tweets for you"
+end
+
+
+=>create a ruby class and it's instances , and print the total no of instances.
+
+class TestClass
+  @@count_of_instances=0
+  def initialize(place)
+    @name = place 
+    @@count_of_instances += 1
+  end
+  def what_are_you_doing(name)
+    if @name=="office"
+      puts "#{name} is learning Ruby at #{@name}"
+    else
+      puts "#{name} is sleeping at #{@name}"
+    end
+  end
+  def self.tell_me_instance_count
+    puts "There are #{@@count_of_instances} instances"
+  end
+end
+
+office = TestClass.new("office")
+home = TestClass.new("Home")
+home.what_are_you_doing("Ram")
+office.what_are_you_doing("Raj")
+TestClass.tell_me_instance_count
+
+
+
+
+=>what is self in ruby and show it's usage by sample ruby code .
+
+
+Self Refers to Current object in Ruby.In following example i have used self to call another method using the object
+
+#!/usr/local/bin/ruby -w
+
+class TestClass
+  
+  @@count_of_instances=0
+  def initialize(place)
+    @name = place 
+    @@count_of_instances += 1
+    
+  end
+  def what_are_you_doing(name)
+    if @name=="office"
+      puts "#{name} is learning Ruby at #{@name}"
+      self.go_home(name)
+    else
+      puts "#{name} is sleeping at #{@name}"
+      
+    end
+  end
+  def go_home(name)
+    @name="home"    
+    self.what_are_you_doing(name)
+  end
+  def self.tell_me_instance_count
+    puts "There are #{@@count_of_instances} instances"
+    
+  end
+end
+
+office = TestClass.new("office")
+home = TestClass.new("Home")
+home.what_are_you_doing("Ram")
+office.what_are_you_doing("Raj")
+TestClass.tell_me_instance_count
+
+
+=>Write a ruby code using yeild .
+
+#!/usr/local/bin/ruby -w
+
+def going_to_use_yield
+  yield 10,30,40,20
+end
+
+going_to_use_yield { |a,b,c,d| puts (a+b+c+d)/4}
+  
+
+#Example 2
+
+#!/usr/local/bin/ruby -w
+
+def going_to_use_yield(array)
+  ans = 0
+  array.each do |n|
+    ans+=n
+  end
+  yield ans
+end
+
+going_to_use_yield [10,20,30,40] do |n| puts n end
+  
